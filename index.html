@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Fonctionnalités</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <header>
+        <h1>Application Park</h1>
+    </header>
+
+    <main>
+        <section id="memoryCard">
+            <div id="plateauCard">
+                <div class="card" data-color="red"></div>
+                <div class="card" data-color="red"></div>
+                <div class="card" data-color="green"></div>
+                <div class="card" data-color="green"></div>
+                <div class="card" data-color="blue"></div>
+                <div class="card" data-color="blue"></div>
+                <div class="card" data-color="pink"></div>
+                <div class="card" data-color="pink"></div>
+                <div class="card" data-color="violet"></div>
+                <div class="card" data-color="violet"></div>
+                <div class="card" data-color="black"></div>
+                <div class="card" data-color="black"></div>
+            </div>
+            <div id="score">
+                <p id="paragraphe">Score</p>
+                <button id="restart">Recommencer</button>
+            </div>
+        </section>
+
+        <section id="calculatrice">
+            <div id="zoneCalculatrice">
+                <p id="affichage"></p>
+                <div class="zoneBouton">
+                    <div class="boutonChiffre">
+                        <button class="chiffre">7</button>
+                        <button class="chiffre">8</button>
+                        <button class="chiffre">9</button>
+                        <button class="chiffre">4</button>
+                        <button class="chiffre">5</button>
+                        <button class="chiffre">6</button>
+                        <button class="chiffre">1</button>
+                        <button class="chiffre">2</button>
+                        <button class="chiffre">3</button>
+                        <button class="chiffre">0</button>
+                        <button class="chiffre">.</button>
+                        <button id="resultat">=</button>
+                    </div>
+                    <div class="boutonOperateur">
+                        <button id="reset">C</button>
+                        <button class="chiffre">/</button>
+                        <button class="chiffre">*</button>
+                        <button class="chiffre">-</button>
+                        <button class="chiffre">+</button>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section id="gestionnaire">
+            <div id="zoneGestionnaire">
+                <h2>Gestionnaire de tâches</h2>
+                <div class="ligneSaisie">
+                    <input id="saisie" type="text">
+                    <button id="gesAjouter">Ajouter</button>
+                </div>
+                <div id="taskList"></div>
+            </div>
+        </section>
+    </main>
+
+    <script src="script.js"></script>
+</body>
+</html>
