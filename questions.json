@@ -1,0 +1,27 @@
+[
+  {
+    "question": "Quel est le langage utilisé pour styliser une page web ?",
+    "answers": ["HTML", "CSS", "JavaScript"],
+    "correct": 1
+  },
+  {
+    "question": "Quel mot-clé déclare une constante en JS ?",
+    "answers": ["let", "const", "var"],
+    "correct": 1
+  },
+  {
+    "question": "Quelle balise HTML représente un paragraphe ?",
+    "answers": ["<div>", "<p>", "<h1>"],
+    "correct": 1
+  },
+  {
+    "question": "Combien vaut 2 + '2' en JS ?",
+    "answers": ["22", "4", "NaN"],
+    "correct": 0
+  },
+  {
+    "question": "Quelle méthode ajoute un élément en fin de tableau ?",
+    "answers": [".pop()", ".push()", ".shift()"],
+    "correct": 1
+  }
+]

@@ -228,3 +228,113 @@ jsGestionnaireAjouter.addEventListener("click", () => {
 
 //     jsGestionnaireInput.value = null;
 // })
+
+
+/* <---------- SNAKE QUIZ ----------> */
+
+//Liaison des balises avec le js
+let zoneQuiz = document.getElementById("zoneQuiz");
+let question = document.getElementById("question");
+let cptRebourd = document.getElementById("compteRebourd");
+let proposition = document.getElementById("proposition");
+let reponse = document.getElementById("reponses");
+let coeur = document.getElementById("vies");
+
+let compteur = 0;
+let nbBonneReponse = 0;
+let vies = 3;
+let intervalId = null;
+
+function minuteur (data) {
+    //Réinitialise le minuteur
+    clearInterval(intervalId);
+
+    let temps = 10;
+    cptRebourd.textContent = temps;
+
+    intervalId = setInterval(() => {
+        temps--;
+        cptRebourd.textContent = temps;
+
+        if (temps === 0) {
+            clearInterval(intervalId);
+            reponse.textContent = "Temps écoulé !";
+            compteur++;
+            vies--;
+            setTimeout(() => afficherQuestion(data), 1000);
+        }
+    }, 1000);
+}
+
+function afficherQuestion (data) {
+    //On efface au préalable le contenu de reponse et de proposition
+    proposition.innerHTML = "";
+    reponse.textContent = "";
+
+    //On affiche les vies
+    coeur.textContent = vies;
+
+    if (vies === 0) {
+        question.textContent = `Game over ! Score : ${nbBonneReponse} / ${data.length}`
+        cptRebourd.textContent = ""
+        return;
+    }
+
+    //Si le nombre de questions posées = nb questions dans tableau
+    if (compteur === data.length) {
+        question.textContent = `Fin du quiz ! Score : ${nbBonneReponse} / ${data.length}`;
+        cptRebourd.textContent = ""
+        return;
+    }
+
+    //On récupère UN des objets
+    let QCM = data[compteur];
+
+    //On récupère et affiche la question
+    question.textContent = QCM.question;
+
+    //On récupère le tableau de réponse
+    let tableReponse = QCM.answers;
+    console.log(tableReponse);
+    
+    //On récupère la réponse correct
+    let correctReponse = tableReponse[QCM.correct];
+    console.log(correctReponse);
+    
+    //On mélange le tableau
+    let tableMelanger = tableReponse.sort(() => Math.random() - 0.5);
+
+    //On récupère l'index de la réponse correct après mélange
+    let correctIndex = tableMelanger.indexOf(correctReponse);
+
+    //On boucle le tableau de réponse pour les afficher
+    tableMelanger.forEach((element, index) => {
+        let boutonReponse = document.createElement("button");
+        boutonReponse.textContent = element;
+        proposition.appendChild(boutonReponse);
+
+        boutonReponse.addEventListener("click", () => {
+            clearInterval(intervalId);
+
+            if (index === correctIndex) {
+                reponse.textContent = "Bonne réponse !";
+                nbBonneReponse++;
+            } else {
+                reponse.textContent = "Mauvaise réponse !";
+                vies--;
+            }
+
+            compteur++;
+            setTimeout(() => afficherQuestion(data), 1000);
+        })
+    });
+    minuteur(data);
+}
+
+fetch("questions.json")
+.then(response => response.json())
+.then(data => {
+        
+    afficherQuestion(data);
+    console.log("Test1000");   
+})
